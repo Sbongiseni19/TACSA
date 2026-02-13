@@ -218,72 +218,98 @@
         }
 
         /* ===== MASONRY GALLERY ===== */
-        .masonry-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin: 3rem 0;
-        }
+       .masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 columns for better alignment */
+    gap: 1.5rem;
+    margin: 3rem 0;
+}
 
-        .masonry-item {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: 0.5s;
-            cursor: pointer;
-        }
+.masonry-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.5s;
+    cursor: pointer;
+    background: #1a1f24;
+    aspect-ratio: 4/3;  /* Makes all items the same rectangular shape */
+    width: 100%;
+}
 
-        .masonry-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%);
-            z-index: 1;
-        }
+.masonry-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+    display: block;
+}
 
-        .masonry-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
+.masonry-item:hover img {
+    transform: scale(1.1);
+}
 
-        .masonry-item:hover img {
-            transform: scale(1.1);
-        }
+.masonry-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%);
+    z-index: 1;
+    opacity: 1;
+    transition: 0.3s;
+}
 
-        .masonry-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem 1.5rem;
-            color: white;
-            z-index: 2;
-        }
+.masonry-item:hover::before {
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 40%);
+}
 
-        .masonry-caption h4 {
-            font-size: 1.5rem;
-            margin-bottom: 0.3rem;
-        }
+.masonry-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    color: white;
+    z-index: 2;
+}
 
-        .masonry-caption p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            font-style: italic;
-        }
+.masonry-caption h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.2rem;
+    color: white;
+}
 
-        .masonry-caption i {
-            color: #d4af37;
-            margin-right: 0.5rem;
-        }
+.masonry-caption h4 i {
+    color: #d4af37;
+    margin-right: 0.5rem;
+}
 
-        .item-tall { grid-row: span 2; height: 500px; }
-        .item-wide { grid-column: span 2; }
-        .item-large { grid-column: span 2; grid-row: span 2; height: 500px; }
+.masonry-caption p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-style: italic;
+    color: #d4af37;
+}
+
+/* Remove all special sizing classes */
+/* Delete these from your CSS:
+.item-tall, .item-wide, .item-large 
+*/
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+    .masonry-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .masonry-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
         /* ===== SLIDESHOW GALLERY - NEW! ===== */
         .slideshow-container {
@@ -942,42 +968,42 @@
 
     <div class="masonry-grid">
         <div class="masonry-item item-large">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='500'%3E%3Crect width='600' height='500' fill='%233d4a52'/%3E%3Ctext x='150' y='250' fill='%23d4af37' font-size='40'%3EWorship%3C/text%3E%3C/svg%3E" alt="Worship">
+            <img src="worship1.jpg" alt="Baptism">
             <div class="masonry-caption">
                 <h4><i class="fas fa-music"></i> Sunday Worship</h4>
                 <p>Psalm 100:2 - Worship the Lord with gladness</p>
             </div>
         </div>
         <div class="masonry-item item-tall">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500'%3E%3Crect width='400' height='500' fill='%232f3b43'/%3E%3Ctext x='80' y='250' fill='%23d4af37' font-size='30'%3EBaptism%3C/text%3E%3C/svg%3E" alt="Baptism">
+            <img src="baptism.jpg" alt="Baptism">
             <div class="masonry-caption">
                 <h4><i class="fas fa-water"></i> Baptism Service</h4>
                 <p>Acts 2:41 - About 3000 were added</p>
             </div>
         </div>
         <div class="masonry-item">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%233d4a52'/%3E%3Ctext x='80' y='130' fill='%23d4af37' font-size='30'%3EYouth%3C/text%3E%3C/svg%3E" alt="Youth">
-            <div class="masonry-caption">
-                <h4><i class="fas fa-child"></i> Youth Conference</h4>
-                <p>1 Timothy 4:12</p>
-            </div>
-        </div>
+    <img src="youth.jpg" alt="Youth Conference">
+    <div class="masonry-caption">
+        <h4><i class="fas fa-child"></i> Youth Conference</h4>
+        <p>1 Timothy 4:12</p>
+    </div>
+</div>
         <div class="masonry-item">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%232f3b43'/%3E%3Ctext x='80' y='130' fill='%23d4af37' font-size='30'%3EWomen%3C/text%3E%3C/svg%3E" alt="Women">
+            <img src="woman1.jpg" alt="Woman's Day">
             <div class="masonry-caption">
                 <h4><i class="fas fa-female"></i> Women's Day</h4>
                 <p>Proverbs 31</p>
             </div>
         </div>
         <div class="masonry-item item-wide">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='250'%3E%3Crect width='600' height='250' fill='%233d4a52'/%3E%3Ctext x='200' y='130' fill='%23d4af37' font-size='30'%3EOutreach%3C/text%3E%3C/svg%3E" alt="Outreach">
+            <img src="community.jpg" alt="Community Outreach">
             <div class="masonry-caption">
                 <h4><i class="fas fa-heart"></i> Community Outreach</h4>
                 <p>Matthew 28:19 - Go and make disciples</p>
             </div>
         </div>
         <div class="masonry-item">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%232f3b43'/%3E%3Ctext x='80' y='130' fill='%23d4af37' font-size='30'%3EPrayer%3C/text%3E%3C/svg%3E" alt="Prayer">
+            <img src="prayer.jpg" alt="Prayer Night">
             <div class="masonry-caption">
                 <h4><i class="fas fa-hands-praying"></i> Prayer Night</h4>
                 <p>Philippians 4:6</p>
@@ -1062,7 +1088,7 @@
             <img src="Mazibuko.jpg" alt="Pastor Mazibuko" class="pastor-bg">
             <div class="pastor-overlay"></div>
             <div class="pastor-content">
-                <h5>Pastor Mazibuko</h5>
+                <h5>Pastor SJ. Mazibuko</h5>
                 <div class="pastor-verse">"Preach the word" - 2 Tim 4:2</div>
             </div>
         </div>
@@ -1072,7 +1098,7 @@
             <img src="Mthethwa.jpg" alt="Pastor Mthethwa" class="pastor-bg">
             <div class="pastor-overlay"></div>
             <div class="pastor-content">
-                <h5>Pastor Mthethwa</h5>
+                <h5>...</h5>
                 <div class="pastor-verse">"Restore the years" - Joel 2:25</div>
             </div>
         </div>
@@ -1082,7 +1108,7 @@
             <img src="Ditsile.jpg" alt="Pastor Ditsile" class="pastor-bg">
             <div class="pastor-overlay"></div>
             <div class="pastor-content">
-                <h5>Pastor Ditsile</h5>
+                <h5>...</h5>
                 <div class="pastor-verse">"Let children come" - Mark 10:14</div>
             </div>
         </div>
@@ -1092,7 +1118,7 @@
             <img src="pastor.jpg" alt="..." class="pastor-bg">
             <div class="pastor-overlay"></div>
             <div class="pastor-content">
-                <h5>Pastor Fourie</h5>
+                <h5>...</h5>
                 <div class="pastor-verse">"One in Christ" - Gal 3:28</div>
             </div>
         </div>
@@ -1107,24 +1133,24 @@
 
     <div class="branches-photo-grid">
         <div class="branch-photo-card">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='350'%3E%3Crect width='400' height='350' fill='%233d4a52'/%3E%3Ctext x='100' y='180' fill='%23d4af37' font-size='30'%3EMabopane%3C/text%3E%3C/svg%3E" alt="Mabopane">
-            <div class="branch-info">
-                <h4>Mabopane</h4>
-                <p>Mr Khambule | Sundays 10:00</p>
-            </div>
-        </div>
+    <img src="khambule.jpg" alt="Mabopane Branch - Mr Khambule">
+    <div class="branch-info">
+        <h4>Mabopane</h4>
+        <p>Mr Khambule | Sundays 10:00</p>
+    </div>
+</div>
         <div class="branch-photo-card">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='350'%3E%3Crect width='400' height='350' fill='%232f3b43'/%3E%3Ctext x='100' y='180' fill='%23d4af37' font-size='30'%3EPretoria%3C/text%3E%3C/svg%3E" alt="Pretoria">
+           <img src="phungula1.jpg" alt="Mabopane Branch - Mr Phungula">
             <div class="branch-info">
                 <h4>Pretoria</h4>
                 <p>Mr SM Phungula | Sundays 8:00 & 10:00</p>
             </div>
         </div>
         <div class="branch-photo-card">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='350'%3E%3Crect width='400' height='350' fill='%233d4a52'/%3E%3Ctext x='100' y='180' fill='%23d4af37' font-size='30'%3EMidrand%3C/text%3E%3C/svg%3E" alt="Midrand">
+            <img src="mukwena1.jpg" alt="Mabopane Branch - Mr Mukwena">
             <div class="branch-info">
                 <h4>Midrand</h4>
-                <p>... | Sundays 10:00</p>
+                <p>Mr Mukwena | Sundays 10:00</p>
             </div>
         </div>
         <div class="branch-photo-card">
