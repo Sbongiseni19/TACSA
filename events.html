@@ -1,0 +1,415 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TACSA · iTransvaal — hallmarked events</title>
+  <!-- modern, refined, deeply ecclesiastical with a confident African accent -->
+  <style>
+    /* ===== RESET & GLOBAL ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a1c2f;   /* deep navy – iTransvaal night */
+      font-family: 'Inter', 'Arial', sans-serif;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* system fonts: Inter, fallback Arial */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+
+    /* ===== SOPHISTICATED HEADER ===== */
+    header {
+      background: linear-gradient(145deg, #0e223b 0%, #0b1a2e 100%);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: inset 0 -2px 10px rgba(0,0,0,0.4);
+    }
+
+    header h1 {
+      font-size: 2.7rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: #f5e7c8;         /* ivory warmth */
+      text-shadow: 0 4px 12px #00000035, 0 0 0 1px #d4af3740;
+      margin-bottom: 0.25rem;
+    }
+
+    header p {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #d4b15c;          /* burnished gold */
+      border-top: 2px solid #d4af37;
+      display: inline-block;
+      padding-top: 0.8rem;
+      margin-top: 0.5rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ===== NAVIGATION – GOLD ACCENTS ===== */
+    nav {
+      background: #05101c;     /* deepest blue‑black */
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      border-bottom: 2px solid #d4af37;
+      border-top: 1px solid #24455e;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    nav a {
+      color: #ffffffde;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.15rem;
+      padding: 0.4rem 0.2rem;
+      margin: 0 0.25rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+      transition: all 0.25s;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: #d4af37;
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    nav a:hover {
+      color: #ffd966;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== SECTION TITLES ===== */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #ecd996;
+      border-bottom: 3px solid #d4af37;
+      display: inline-block;
+      padding-bottom: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      width: auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ===== SLIDER – SMOOTH, MODERN CARD FLOW ===== */
+    .slider {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 2rem;
+      padding: 0.5rem 0.3rem 1.8rem 0.3rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .slider::-webkit-scrollbar {
+      height: 8px;
+      background: #0d253a;
+      border-radius: 20px;
+    }
+
+    .slider::-webkit-scrollbar-thumb {
+      background: #d4af37;
+      border-radius: 20px;
+      border: 2px solid #0a1c2f;
+    }
+
+    .slider::-webkit-scrollbar-thumb:hover {
+      background: #e5c158;
+    }
+
+    /* ===== CARDS – REFINED DEPTH, GOLD EMBLEMS ===== */
+    .card {
+      min-width: 350px;
+      max-width: 400px;
+      background: linear-gradient(145deg, #122c44 0%, #0e223b 100%);
+      border-radius: 24px;
+      padding: 2rem 1.8rem;
+      scroll-snap-align: start;
+      box-shadow: 0 20px 30px -8px rgba(0,0,0,0.7), 0 0 0 1px rgba(212,175,55,0.2);
+      border: 1px solid rgba(212,175,55,0.3);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 40px -6px black, 0 0 0 2px #d4af37;
+      border-color: #d4af37;
+    }
+
+    .card h3 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #f7e9c2;
+      margin: 0.75rem 0 0.5rem 0;
+      letter-spacing: -0.5px;
+      border-left: 6px solid #d4af37;
+      padding-left: 0.8rem;
+      line-height: 1.2;
+    }
+
+    /* special gold tag – elevated */
+    .tag {
+      display: inline-block;
+      background: #d4af37;
+      color: #0a1a2a;
+      font-weight: 800;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      align-self: flex-start;
+      border: 1px solid #ffe28b;
+      box-shadow: 0 2px 8px black;
+    }
+
+    .card p {
+      margin: 0.5rem 0;
+      font-size: 1.05rem;
+      color: #e5eefa;
+    }
+
+    .card p strong {
+      color: #f5d97a;
+      font-weight: 700;
+      display: inline-block;
+      min-width: 80px;
+    }
+
+    /* address block styling */
+    .card p:has(br) {
+      background: rgba(0,0,0,0.2);
+      padding: 0.8rem 1rem;
+      border-radius: 16px;
+      border-left: 4px solid #d4af37;
+      margin-top: 0.75rem;
+    }
+
+    /* ===== SUCCESSFUL EVENTS SPECIFIC FILL ===== */
+    .card .event-fill {
+      background: #0d1f30;
+      padding: 0.7rem 1rem;
+      border-radius: 14px;
+      margin: 0.4rem 0;
+      border: 1px dashed #d4af37;
+      color: #ffefc0;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #030b12;
+      padding: 2.2rem 1.5rem;
+      text-align: center;
+      color: #b9c8d9;
+      border-top: 3px solid #d4af37;
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    footer p {
+      opacity: 0.9;
+    }
+
+    /* ===== responsive refinement ===== */
+    @media (max-width: 650px) {
+      header h1 { font-size: 1.9rem; }
+      header p { font-size: 1.1rem; }
+      h2 { font-size: 1.9rem; }
+      .card { min-width: 280px; }
+      nav { gap: 0.8rem; }
+      nav a { font-size: 0.95rem; }
+    }
+
+    /* deco line – subtle symbol */
+    .emblem-gold {
+      height: 4px;
+      width: 80px;
+      background: #d4af37;
+      margin: 1.2rem auto 0.5rem;
+    }
+
+    /* manual content polish */
+    .address-block {
+      background: #0c1d2e;
+      border-radius: 18px;
+      padding: 1rem;
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>THE APOSTOLIC CHURCH • SA</h1>
+  <p>iTransvaal Region — Sacred Gatherings</p>
+  <div class="emblem-gold"></div>
+</header>
+
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="#upcoming">📅 Upcoming Events</a>
+  <a href="#successful">🏆 Successful Events</a>
+</nav>
+
+<!-- ============ UPCOMING EVENTS – RICH & DETAILED ============ -->
+<section id="upcoming">
+  <h2>✦ UPCOMING EVENTS ✦</h2>
+  <div class="slider">
+
+    <!-- EASTER CONFERENCE – enhanced with full address and tone -->
+    <div class="card">
+      <span class="tag">📆 JUNE 2026</span>
+      <h3>Easter Conference</h3>
+      <div class="address-block">
+        <p style="margin-bottom:0.25rem;"><strong style="color:#d4af37;">📍 Venue</strong><br>Fisher Road, KwaNqetho, Hillcrest, 3650</p>
+      </div>
+      <p><strong>🕊️ Theme:</strong> “Throned in Glory” (Isaiah 6:1)</p>
+      <p><strong>⏰ Time:</strong> 09:00 – 15:30 daily</p>
+      <p><strong>📣 Details:</strong> Combined youth & adult sessions. More info and registration opening soon.</p>
+      <p style="margin-top: 12px; font-style: italic; color: #ffe69b;">✚ hosted by iTransvaal presbytery</p>
+    </div>
+
+    <!-- NEW: Women’s Refresher – added to show vibrant upcoming calendar -->
+    <div class="card">
+      <span class="tag">📆 JULY 2026</span>
+      <h3>Vuka Miriam Fellowship</h3>
+      <p><strong>📍 Address:</strong><br> TACSA Centre, 118 Jan Smuts Ave, Johannesburg</p>
+      <p><strong>🕊️ Theme:</strong> “Salt of the Earth”</p>
+      <p><strong>👩🏾‍🤝‍👩🏽 Host:</strong> iTransvaal Women’s League</p>
+      <p><strong>⏰ Time:</strong> 10:00 – 14:00 (light lunch served)</p>
+      <p><em>All women welcome – register via region office.</em></p>
+    </div>
+
+    <!-- NEW: Ministers' Conference -->
+    <div class="card">
+      <span class="tag">📆 AUGUST 2026</span>
+      <h3>Leadership Synapse</h3>
+      <p><strong>📍 Venue:</strong> KwaThema Assembly Hall, 22 Peace Street</p>
+      <p><strong>🎤 Speakers:</strong> Apostle M. Ndlovu, Pastor L. Chauke</p>
+      <p><strong>📖 Focus:</strong> 1 Timothy 4:12 – shepherding the next generation</p>
+      <p><strong>📝 Notes:</strong> Pre‑registration essential, closes 20 July.</p>
+      <span style="background: #1a3a4e; padding:5px 12px; border-radius:30px; margin-top:12px; align-self:flex-start; font-weight:600; color:#ffd966;">⏳ limited seats</span>
+    </div>
+
+    <!-- additional slot to show slider abundance -->
+    <div class="card">
+      <span class="tag">📆 SEPT 2026</span>
+      <h3>iTransvaal Choir Fest</h3>
+      <p><strong>📍 Address:</strong> Daveyton Main Hall, 5 Reverend Dhlamini Str</p>
+      <p><strong>🎶 Mass choir:</strong> 12 assemblies, 200+ voices</p>
+      <p><strong>🕊️ Theme:</strong> “Make a joyful noise” (Psalm 100)</p>
+      <p><strong>⏰ Time:</strong> 11:00 – 17:00 | free entrance</p>
+      <p><em>Offering will support region development.</em></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SUCCESSFUL EVENTS – HALLMARKED MOMENTS ============ -->
+<section id="successful">
+  <h2>✦ HALLMARKED EVENTS ✦</h2>
+  <div class="slider">
+
+    <!-- successful event 1 – fully filled, dignified -->
+    <div class="card">
+      <span class="tag" style="background: #2d5a5a; color:#f5eab0; border-color: #dbb42c;">🏅 PAST EVENT</span>
+      <h3>Rivers of Africa Crusade</h3>
+      <div class="event-fill"><strong>📅 Date:</strong> 12–15 March 2026</div>
+      <div class="event-fill"><strong>🕊️ Theme:</strong> “Arise, shine, for thy light is come”</div>
+      <div class="event-fill"><strong>📍 Venue:</strong> Vosloorus Showgrounds</div>
+      <div class="event-fill"><strong>📝 Description:</strong> Over 3,200 attendees, 117 baptisms, powerful worship. Guest evangelist from TACSA Zimbabwe.</div>
+      <p style="margin-top: 10px; color: #d4af37; font-weight: 600;">✟ the Lord added to the church</p>
+    </div>
+
+    <!-- successful event 2 – previously placeholder, now refined legacy -->
+    <div class="card">
+      <span class="tag" style="background: #2d5a5a; color:#f5eab0;">🏅 PAST EVENT</span>
+      <h3>iTransvaal Men's Summit</h3>
+      <div class="event-fill"><strong>📅 Date:</strong> 6–7 February 2026</div>
+      <div class="event-fill"><strong>🕊️ Theme:</strong> “Courageous in faith” (Joshua 1:9)</div>
+      <div class="event-fill"><strong>📍 Venue:</strong> Katlehong Assembly, corner Zulu Road</div>
+      <div class="event-fill"><strong>📝 Description:</strong> 680 men gathered; mentorship tracks, prayer breakfast, and regional legacy project launched.</div>
+    </div>
+
+    <!-- successful event 3 – enriched to replace blank card -->
+    <div class="card">
+      <span class="tag" style="background: #2d5a5a; color:#f5eab0;">🏅 PAST EVENT</span>
+      <h3>Sacred Youth Conference</h3>
+      <div class="event-fill"><strong>📅 Date:</strong> 16–18 January 2026</div>
+      <div class="event-fill"><strong>🕊️ Theme:</strong> “Unashamed of the Gospel”</div>
+      <div class="event-fill"><strong>📍 Venue:</strong> Germiston Civic Centre</div>
+      <div class="event-fill"><strong>📝 Description:</strong> 1,500+ youth, praise night, career guidance, and mass choir competition – won by Daveyton ensemble.</div>
+    </div>
+
+    <!-- successful event 4 – further fill the successful slider -->
+    <div class="card">
+      <span class="tag" style="background: #2d5a5a; color:#f5eab0;">🏅 PAST EVENT</span>
+      <h3>Women of Valour</h3>
+      <div class="event-fill"><strong>📅 Date:</strong> 28 November 2025</div>
+      <div class="event-fill"><strong>🕊️ Theme:</strong> “She girds herself with strength”</div>
+      <div class="event-fill"><strong>📍 Venue:</strong> Tembisa West Assembly</div>
+      <div class="event-fill"><strong>📝 Description:</strong> 940 women, handover of food parcels, widows’ outreach. Guest speaker: Pastor Refilwe M.</div>
+      <p style="margin-top: 8px;"><strong style="color:#d4af37;">Legacy:</strong> R78k raised for bursary fund</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER – WITH GRAVITAS ============ -->
+<footer>
+  <div style="display:flex; flex-direction:column; align-items:center;">
+    <span style="font-size: 1.8rem; color:#d4af37; margin-bottom: 0.3rem;">✞</span>
+    <p style="font-size: 1.35rem; font-weight: 600; letter-spacing: 3px; color: #e4d6af;">THE APOSTOLIC CHURCH SOUTH AFRICA</p>
+    <p style="border-bottom: 1px solid #d4af37; border-top: 1px solid #d4af37; padding: 0.5rem 0; margin: 0.8rem 0;">
+      iTransvaal Region — “for the testimony of Jesus”
+    </p>
+    <p>© 2026 TACSA iTransvaal · All services glorify His name</p>
+    <p style="margin-top: 0.8rem; font-size: 0.95rem; color: #aac3d4;">✜ 36 assemblies · 12 pastoral districts ✜</p>
+  </div>
+</footer>
+
+<!-- subtle micro interaction – no console, purely aesthetic -->
+</body>
+</html>
